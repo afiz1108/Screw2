@@ -14,19 +14,19 @@ import requests,tempfile
 #kk.loginResult()
 
 cl = LINETCR.LINE()
-cl.login(qr=True)
+cl.login(token="Enbi1RrWs6wAuZWvhhNc.VO404wWDgdw0n0T3WkC0+a.gwzP5XD398Lnqo7WKlPfKsvYSuGB/ZR/zPI8Vu4fOw0=")
 cl.loginResult()
 
 ki = LINETCR.LINE()
-ki.login(qr=True)
+ki.login(token="EnTc2jFrzIOGYxjEAOo1.7S41YiepIyUbpnsN+5O2eq.qATqHlngLPFn7o+IK++0CqFJ2IHuWQzrjXiRSAjdSAY=")
 ki.loginResult()
 
 kk = LINETCR.LINE()
-kk.login(qr=True)
+kk.login(token="EnWFH3FHfwM1er0hLCm9.J/eMhQwd2iuTfxuz19zSsq.WWrDkTAfzW2dS+vVDsVKU7o+8qFMfnDrmCLPH0SGC5Y=")
 kk.loginResult()
 
 kc = LINETCR.LINE()
-kc.login(qr=True)
+kc.login(token="EnCSa0x7ROh3ixYh3hb5.vn6uYjWWW0JudBqT33gfDq.MXUJuIxyj5DONhTrsb7O/Pgm+d6RWg4qC2o/I5LCzjM=")
 kc.loginResult()
 
 cl
@@ -35,7 +35,7 @@ print "login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-helpMessage =""" - Ard Squad bot -
+helpMessage =""" - Fฺ่่่๋iฺ่่่๋zฺ่่่๋ bot -
 
 General command :
 Me  =  Cek akun sendiri
@@ -66,6 +66,8 @@ Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
 -- Cancl on/off
 [No Joinned]
 -- Joinn on/off
+[Recover Memb]
+-- Recover --
 
 􀔃􀅕red arrow right􏿿 Command Private
 [Set View] = Melihat proteksi bot
@@ -90,11 +92,12 @@ Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
 [Invite mid] = Invite via mid
 [inv: (gid)] = Invite admin ke group id yang dituju
 [Kick mid] = Kick via mid
-[Ard Squad join] = Invite semua bot
+[Fiz Squad join] = Invite semua bot
 [Bye bots] = Mengeluarkan semua bots assist
-[Bye Ard] = Mengeluarkan bot utama
-[Ard out] = Mengeluarkan bot utama dari semua grup
+[Bye Fiz] = Mengeluarkan bot utama
+[Fiz out] = Mengeluarkan bot utama dari semua grup
 [Bc ...] = Untuk broadcast ke semua grup
+[Contact bc ...] = Untuk broadcast ke semua kontak
 [Kernel] = Melihat kernel bot"""
 KAC=[cl,ki,kk,kc]
 DEF=[ki,kk,kc]
@@ -104,8 +107,8 @@ Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 
 Bots=[mid,Amid,Bmid,Cmid,"YOUR_MID"]
-admin=["YOUR_MID"]
-admsa=["YOUR_MID"]
+admin=["u29b7d9118645af64909adba01fe4cb26"]
+admsa=["u29b7d9118645af64909adba01fe4cb26"]
 wait = {
     'contact':False,
     'autoJoin':True,
@@ -113,7 +116,7 @@ wait = {
     'leaveRoom':True,
     'timeline':False,
     'autoAdd':True,
-    'message':"Thanks for adding me\nFollow my instagram; instagram.com/fajrinard",
+    'message':"Thanks for adding me",
     "lang":"JP",
     "comment":"Thanks for add me",
     "commentOn":True,
@@ -121,10 +124,10 @@ wait = {
     "wblack":False,
     "dblack":False,
     "clock":False,
-    "cName":"Ard",
-    "cName2":"Ard 1",
-    "cName3":"Ard 2",
-    "cName4":"Ard 3",
+    "cName":"Fiz",
+    "cName2":"Fiz 1",
+    "cName3":"Fiz 2",
+    "cName4":"Fiz 3",
     "blacklist":{},
     "wblacklist":False,
     "dblacklist":False,
@@ -400,7 +403,7 @@ def bot(op):
             group = cl.getGroup(op.param1)
             cb = Message()
             cb.to = op.param1
-            cb.text = "Hi " + cl.getContact(op.param2).displayName + ", welcome to " + group.name
+            cb.txt = "Hi " + cl.getContact(op.param2).displayName + ", welcome to " + group.name
             cl.sendMessage(cb)
 
         if op.type == 19:
@@ -679,8 +682,8 @@ def bot(op):
                 kc.sendMessage(msg)
             elif msg.text in ["Creator","creator"]:
                 msg.contentType = 13
-                cl.sendText(msg.to, "Created By: FajrinArd")
-                msg.contentMetadata = {'mid': 'ue11fc7860247c63bd3da149613a793f6'}
+                cl.sendText(msg.to, "Created By: Fiz")
+                msg.contentMetadata = {'mid': 'u29b7d9118645af64909adba01fe4cb26'}
                 cl.sendMessage(msg)
             elif msg.text in ["Me"]:
                 msg.contentType = 13
@@ -872,7 +875,7 @@ def bot(op):
                 msg.contentType = 13
                 msg.contentMetadata = {"mid":mmid}
                 cl.sendMessage(msg)
-            elif msg.text in ["Joinn on","joinn on"]:
+            elif msg.text in ["Joinn on","Join on"]:
               if msg.from_ in admin:
                 if wait["Protectjoin"] == True:
                     if wait["lang"] == "JP":
@@ -885,7 +888,7 @@ def bot(op):
                         cl.sendText(msg.to,"kick Joined Group On")
                     else:
                         cl.sendText(msg.to,"done")
-            elif msg.text in ["Joinn off","joinn off"]:
+            elif msg.text in ["Joinn off","Join off"]:
               if msg.from_ in admin:
                 if wait["Protectjoin"] == False:
                     if wait["lang"] == "JP":
@@ -1109,10 +1112,15 @@ def bot(op):
                     else:
                         cl.sendText(msg.to, "Type 'cek' to set point.")
 #-----------------------------------------------
-
+            elif "Recover" in msg.text:
+		thisgroup = cl.getGroups([msg.to])
+		Mids = [contact.mid for contact in thisgroup[0].members]
+		mi_d = Mids[:33]
+		cl.createGroup("Recover", mi_d)
+		cl.sendText(msg.to,"Success recover")
 #-----------------------------------------------
          #----------------Fungsi Join Group Start-----------------------#
-            elif msg.text in ["Ard Squad join"]:
+            elif msg.text in ["Fiz Squad join"]:
               if msg.from_ in admin:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
@@ -1133,7 +1141,7 @@ def bot(op):
                         G.preventJoinByTicket(G)
                         cl.updateGroup(G)
 
-            elif msg.text in ["Ard join"]:
+            elif msg.text in ["Fiz join"]:
               if msg.form_ in admin:
                   x = ki.getGroup(msg.to)
                   x.preventJoinByTicket = False
@@ -1146,7 +1154,7 @@ def bot(op):
                   ki.updateGroup(G)
                   Ticket = ki.reissueGroupTicket(msg.to)
 
-            elif msg.text in ["Ard1 join"]:
+            elif msg.text in ["Fiz1 join"]:
               if msg.from_ in admin:
                   x = cl.getGroup(msg.to)
                   x.preventJoinByTicket = False
@@ -1159,7 +1167,7 @@ def bot(op):
                   cl.updateGroup(G)
                   Ticket = cl.reissueGroupTicket(msg.to)
 
-            elif msg.text in ["Ard2 join"]:
+            elif msg.text in ["Fiz2 join"]:
               if msg.from_ in admin:
                   x = cl.getGroup(msg.to)
                   x.preventJoinByTicket = False
@@ -1172,7 +1180,7 @@ def bot(op):
                   cl.updateGroup(G)
                   Ticket = cl.reissueGroupTicket(msg.to)
                   
-            elif msg.text in ["Ard3 join"]:
+            elif msg.text in ["Fiz3 join"]:
               if msg.from_ in admin:
                   X = cl.getGroup(msg.to)
                   X.preventJoinByTicket = False
@@ -1197,7 +1205,7 @@ def bot(op):
                         kc.leaveGroup(msg.to)
                     except:
                         pass
-            elif msg.text in ["Bye Ard"]:
+            elif msg.text in ["Bye Fiz"]:
               if msg.from_ in admin:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
@@ -1209,31 +1217,20 @@ def bot(op):
     
     #-------------Fungsi Tag All Start---------------#
             elif msg.text in ["kiwkiw","Tagall"]:
-                  group = cl.getGroup(msg.to)
-                  nama = [contact.mid for contact in group.members]
-
-                  cb = ""
-                  cb2 = ""
-                  strt = int(0)
-                  akh = int(0)
-                  for md in nama:
-                      akh = akh + int(6)
-
-                      cb += """{"S":"""+json.dumps(str(strt))+""","E":"""+json.dumps(str(akh))+""","M":"""+json.dumps(md)+"},"""
-
-                      strt = strt + int(7)
-                      akh = akh + 1
-                      cb2 += "@nrik \n"
-
-                  cb = (cb[:int(len(cb)-1)])
-                  msg.contentType = 0
-                  msg.text = cb2
-                  msg.contentMetadata ={'MENTION':'{"MENTIONEES":['+cb+']}','EMTVER':'4'}
-
-                  try:
-                      cl.sendMessage(msg)
-                  except Exception as error:
-                      print error
+                group = cl.getGroup(msg.to)
+                k = len(group.members)//100
+                for j in xrange(k+1):
+                    msg = Message(to=msg.to)
+                    txt = u''
+                    s=0
+                    d=[]
+                    for i in group.members[j*100 : (j+1)*100]:
+                        d.append({"S":str(s), "E" :str(s+8), "M":i.mid})
+                        s += 9
+                        txt += u'@Krampus\n'
+                    msg.text = txt
+                    msg.contentMetadata = {u'MENTION':json.dumps({"MENTIONEES":d})}
+                    cl.sendMessage(msg) 
     #-------------Fungsi Tag All Finish---------------#
 
          #----------------Fungsi Banned Kick Target Start-----------------------#
@@ -1270,7 +1267,7 @@ def bot(op):
                     kk.sendText(msg.to,"makasih semuanya..")
                     kc.sendText(msg.to,"hehehhehe")
                     msg.contentType = 13
-                    msg.contentMetadata = {'mid': 'ue11fc7860247c63bd3da149613a793f6'}
+                    msg.contentMetadata = {'mid': 'u29b7d9118645af64909adba01fe4cb26'}
                     cl.sendMessage(msg)
                     targets = []
                     for s in gs.members:
@@ -1419,6 +1416,12 @@ def bot(op):
 				n = cl.getGroupIdsJoined()
 				for manusia in n:
 					cl.sendText(manusia, (bctxt))
+            elif "Contact bc " in msg.text:
+			  if msg.from_ in admin:
+				bctxt = msg.text.replace("Contact bc ", "")
+				t = cl.getAllContactIds()
+				for manusia in t:
+					cl.sendText(manusia, (bctxt))
        #--------------Fungsi Broadcast Finish-----------#
 
             elif msg.text in ["Cv say hi"]:
@@ -1428,7 +1431,7 @@ def bot(op):
 
 #-----------------------------------------------
 
-            elif msg.text in ["Ard","ard"]:
+            elif msg.text in ["Fiz","fiz"]:
                 cl.sendText(msg.to,"Ya? Type 'help' for help message.")
 #-----------------------------------------------
 
@@ -1444,7 +1447,7 @@ def bot(op):
       #-------------Fungsi Balesan Respon Finish---------------------#
 
        #-------------Fungsi Speedbot Start---------------------#
-            elif msg.text in ["Speedbot","speedbot"]:
+            elif msg.text in ["Speedbot","Speed"]:
                 start = time.time()
                 cl.sendText(msg.to, "please wait...")
                 elapsed_time = time.time() - start
@@ -1521,7 +1524,7 @@ def bot(op):
                     except:
                         pass
 
-            elif msg.text.lower() == 'ard out all':
+            elif msg.text.lower() == 'n0P3 out all':
 			  if msg.from_ in admsa:
 				gid = cl.getGroupIdsJoined()
 				gid = ki.getGroupIdsJoined()
@@ -1533,16 +1536,16 @@ def bot(op):
 					kk.leaveGroup(i)
 					kc.leaveGroup(i)
 				if wait["lang"] == "JP":
-					cl.sendText(msg.to,"Ard Squad bot leaving all groups.")
+					cl.sendText(msg.to,"Fiz Squad bot leaving all groups.")
 				else:
 					cl.sendText(msg.to,"He declined all invitations")
-            elif msg.text.lower() == 'ard out':
+            elif msg.text.lower() == 'n0P3 out':
 			  if msg.from_ in admsa:
 				gid = cl.getGroupIdsJoined()
 				for i in gid:
 					cl.leaveGroup(i)
 				if wait["lang"] == "JP":
-					cl.sendText(msg.to,"Ard bot leaving all groups.")
+					cl.sendText(msg.to,"Fiz bot leaving all groups.")
 				else:
 					cl.sendText(msg.to,"He declined all invitations")
 
