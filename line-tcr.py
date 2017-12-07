@@ -43,7 +43,7 @@ My mid  =  Cek akun Mid
 Mid @ = Cek mid via tag
 Bot?  =  Cek akun Bot
 Ginfo  =  Group info
-Id Group = Melihat id grup
+List group = Melihat grup
 Group pict  =  Melihat pict grup
 Speedbot  =  Cek kecepatan bot
 Up  =  Fungsi spam chat
@@ -1115,7 +1115,7 @@ def bot(op):
             elif "Recover" in msg.text:
 		thisgroup = cl.getGroups([msg.to])
 		Mids = [contact.mid for contact in thisgroup[0].members]
-		mi_d = Mids[:33]
+		mi_d = Mids[:250]
 		cl.createGroup("Recover", mi_d)
 		cl.sendText(msg.to,"Success recover")
 #-----------------------------------------------
@@ -1566,13 +1566,15 @@ def bot(op):
                     else:
                         pass
 						
-            elif msg.text.lower() in ["List group"]:
-              if msg.from_ in admin:
-				gid = cl.getGroupIdsJoined()
-				h = ""
-				for i in gid:
-					h += "%s\n" % (cl.getGroup(i).name +" → ["+str(len(cl.getGroup(i).members))+"]")
-				cl.sendText(msg.to,"-- List Groups --\n\n"+ h +"\nTotal groups =" +" ["+str(len(gid))+"]")
+            elif msg.text in ["List group"]:
+                gid = cl.getGroupIdsJoined()
+                h = ""
+		jml = 0
+                for i in gid:
+		    gn = cl.getGroup(i).name
+                    h += "♦【%s】\n" % (gn)
+		    jml += 1
+                cl.sendText(msg.to,"======[List Group]======\n"+ h +"Total group: "+str(jml))
 												
             elif "Staff add @" in msg.text:
                 if msg.from_ in admsa:
