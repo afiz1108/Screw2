@@ -14,11 +14,13 @@ class LineServer(object):
     LINE_CERTIFICATE_PATH       = '/Q'
     LINE_CHAN_QUERY_PATH        = '/CH4'
 
-    USER_AGENT  = 'Line/5.3.3'
-    APP_NAME    = 'DESKTOPMAC\t5.3.3-YOSEMITE-x64\tMAC\t10.12.0'
-    PHONE_NAME  = 'IOS\t7.13.1\tiPhone OS\t10.12.0'
-    CARRIER     = '1-0'
-    SYSTEM_NAME = 'FDLRCN'
+    USER_AGENT  = 'Line/7.14.0'
+    APP_TYPE    = ApplicationType.IOS
+    APP_NAME    = 'IOSIPAD\t7.14.0\tiPhone OS\t10.12.0'
+    PHONE_TYPE  = ApplicationType.IOS
+    PHONE_NAME  = 'IOS\t7.14.0\tiPhone OS\t10.12.0'
+    CARRIER     = '51089, 1-0'
+    SYSTEM_NAME = 'SPG29'
     IP_ADDR     = '8.8.8.8'
     EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
