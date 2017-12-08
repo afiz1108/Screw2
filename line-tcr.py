@@ -1449,7 +1449,7 @@ def bot(op):
        #-------------Fungsi Speedbot Start---------------------#
             elif msg.text in ["Speedbot","Speed"]:
                 start = time.time()
-                cl.sendText(msg.to, "please wait...")
+                cl.sendText(msg.to, "My Speed...")
                 elapsed_time = time.time() - start
                 cl.sendText(msg.to, "%ss" % (elapsed_time))
       #-------------Fungsi Speedbot Finish---------------------#
