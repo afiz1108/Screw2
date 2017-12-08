@@ -16,7 +16,7 @@ class LineServer(object):
 
     USER_AGENT  = 'Line/7.14.0'
     APP_NAME    = 'DESKTOPMAC\t5.3.3-YOSEMITE-x64\tMAC\t10.12.0'
-    PHONE_NAME  = ''IOSIPAD\t7.14.0\tiPhone OS\t10.12.0'
+    PHONE_NAME  = 'IOSIPAD\t7.14.0\tiPhone OS\t10.12.0'
     CARRIER     = '1-0'
     SYSTEM_NAME = 'FDLRCN'
     IP_ADDR     = '8.8.8.8'
