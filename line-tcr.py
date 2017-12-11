@@ -29,7 +29,7 @@ kc = LINETCR.LINE()
 kc.login(qr=True)
 kc.loginResult()
 
-cl
+ks = kt = kc
 
 print "login success"
 reload(sys)
@@ -206,13 +206,16 @@ def bot(op):
                     cl.sendText(op.param1,str(wait["message"]))
 					
 		if op.type == 32:
-			if wait["Protectgr"] == True:
-				if op.param2 not in Bots + admin:
-					ki.findAndAddContactByMid(op.param3)
-					ki.inviteIntoGroup(op.param1,[op.param3])
-					ki.kickoutFromGroup(op.param1,[op.param2])
-			else:
-				pass
+            if not op.param2 in Bots and admin:
+                if wait["Protectgr"] == True: 
+                    try:
+                        klist=[ki,kk,kc,ks,kt]
+                        kicker = random.choice(klist) 
+                        G = kicker.getGroup(op.param1)
+                        kicker.kickoutFromGroup(op.param1,[op.param2])
+                        kicker.inviteIntoGroup(op.param1, [op.param3])
+                    except Exception, e:
+                       print e
 
         #------Protect Group Kick start------#
         if op.type == 11:
