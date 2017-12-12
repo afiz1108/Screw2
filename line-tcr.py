@@ -31,7 +31,7 @@ kc.loginResult()
 
 cl
 
-print "login success"
+print ("login success")
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -559,34 +559,34 @@ def bot(op):
                         wait["wblack"] = False
                         cl.sendText(msg.to,"Decided not to comment.")
 
-               elif wait["dblack"] == True:
-                   if msg.contentMetadata["mid"] in wait["commentBlack"]:
+            elif wait["dblack"] == True:
+                    if msg.contentMetadata["mid"] in wait["commentBlack"]:
                         del wait["commentBlack"][msg.contentMetadata["mid"]]
                         cl.sendText(msg.to,"Removed from blacklist.")
                         wait["dblack"] = False
 
-                   else:
+                    else:
                         wait["dblack"] = False
                         cl.sendText(msg.to,"There's no target in blacklist.")
-               elif wait["wblacklist"] == True:
-                   if msg.contentMetadata["mid"] in wait["blacklist"]:
+            elif wait["wblacklist"] == True:
+                    if msg.contentMetadata["mid"] in wait["blacklist"]:
                         cl.sendText(msg.to,"Already in blacklist")
                         wait["wblacklist"] = False
-                   else:
+                    else:
                         wait["blacklist"][msg.contentMetadata["mid"]] = True
                         wait["wblacklist"] = False
                         cl.sendText(msg.to,"Added to blacklist.")
 
-               elif wait["dblacklist"] == True:
-                   if msg.contentMetadata["mid"] in wait["blacklist"]:
+            elif wait["dblacklist"] == True:
+                    if msg.contentMetadata["mid"] in wait["blacklist"]:
                         del wait["blacklist"][msg.contentMetadata["mid"]]
                         cl.sendText(msg.to,"Removed from blacklist.")
                         wait["dblacklist"] = False
 
-                   else:
+                    else:
                         wait["dblacklist"] = False
                         cl.sendText(msg.to,"There's no target in blacklist.")
-               elif wait["contact"] == True:
+            elif wait["contact"] == True:
                     msg.contentType = 0
                     cl.sendText(msg.to,msg.contentMetadata["mid"])
                     if 'displayName' in msg.contentMetadata:
@@ -625,7 +625,7 @@ def bot(op):
 					cl.sendText(msg.to,"Command denied.")
 					cl.sendText(msg.to,"Admin permission required.")
             elif ("Gn " in msg.text):
-	       if msg.from_ in admin:
+	      if msg.from_ in admin:
                 if msg.toType == 2:
                     X = cl.getGroup(msg.to)
                     X.name = msg.text.replace("Gn ","")
