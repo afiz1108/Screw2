@@ -56,6 +56,7 @@ Creator      = Melihat kontak pembuat bot
 Time         = Melihat waktu/jam sekarang
 Say          = Menulis kembali apa yg anda tulis
 welcome      = Ucapan selamat datang dan melihat group creator
+Runtime      = Bot sudah on selama
 
 private command :
 Set group = Melihat private menu"""
@@ -109,6 +110,7 @@ Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
 [Rejectall] = Menolak semua invite group pada bot
 [Bc ...] = Untuk broadcast ke semua grup
 [Contact bc ...] = Untuk broadcast ke semua kontak
+[Bot:restart] = Bot reboot
 [Kernel] = Melihat kernel bot"""
 KAC=[cl,ki,kk,kc]
 DEF=[ki,kk,kc]
