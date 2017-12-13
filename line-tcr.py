@@ -159,6 +159,7 @@ wait2 = {
 setTime = {}
 setTime = wait2['setTime']
 
+mulai = time.time()
 
 def sendMessage(to, text, contentMetadata={}, contentType=0):
     mes = Message()
@@ -182,6 +183,15 @@ def NOTIFIED_READ_MESSAGE(op):
             pass
     except:
         pass
+
+def waktu(secs):
+    mins, secs = divmod(secs,60)
+    hours, mins = divmod(mins,60)
+    return '%02d Jam %02d Menit %02d Detik' % (hours, mins, secs)	
+	
+def restart_program():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
 
 def RECEIVE_MESSAGE(op):
     msg = op.message
@@ -1564,6 +1574,10 @@ def bot(op):
                 kc.sendText(msg.to,"Hi buddy 􀜁􀅔Har Har􏿿")
 
 #-----------------------------------------------
+            elif msg.text.lower() == 'runtime':
+              eltime = time.time() - mulai
+              van = "Bot sudah berjalan selama "+waktu(eltime)
+              cl.sendText(msg.to,van)
 
             elif msg.text in ["Fiz","fiz"]:
                 cl.sendText(msg.to,"Ya? Type 'help' for help message.")
@@ -1607,7 +1621,7 @@ def bot(op):
       #-------------Fungsi Balesan Respon Finish---------------------#
 
        #-------------Fungsi Speedbot Start---------------------#
-            elif msg.text in ["Speedbot","Speed"]:
+            elif msg.text in ["Speedbot","Speed","Sp"]:
                 start = time.time()
                 cl.sendText(msg.to, "My Speed...")
                 elapsed_time = time.time() - start
