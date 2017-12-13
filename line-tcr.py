@@ -1581,6 +1581,28 @@ def bot(op):
 
             elif msg.text in ["Fiz","fiz"]:
                 cl.sendText(msg.to,"Ya? Type 'help' for help message.")
+
+#-----------------------------------------------
+            elif "Getname @" in msg.text:
+                _name = msg.text.replace("Getname @","")
+                _nametarget = _name.rstrip(" ")
+                gs = cl.getGroup(msg.to)
+                for h in gs.members:
+                  if _nametarget == h.displayName:
+                      cl.sendText(msg.to,"[DisplayName]:\n" + h.displayName )
+                  else:
+                    pass
+
+            elif "Getbio @" in msg.text:
+                _name = msg.text.replace("Getbio @","")
+                _nametarget = _name.rstrip(" ")
+                gs = cl.getGroup(msg.to)
+                for h in gs.members:
+                  if _nametarget == h.displayName:
+                      cl.sendText(msg.to,"[Status]:\n" + h.statusMessage )
+                  else:
+                    pass
+#-----------------------------------------------
 #-----------------------------------------------
             elif "Spamg " in msg.text:
                 if msg.from_ in admin:
