@@ -1435,6 +1435,13 @@ def bot(op):
                 cl.sendText(msg.to,"Ya? Type 'help' for help message.")
 #-----------------------------------------------
 
+#--------------------------------------------------------
+#Restart_Program
+            elif msg.text in ["Bot:restart"]:
+                  cl.sendText(msg.to, "Bot has been restarted")
+                  restart_program()
+                  print "@Restart"
+#--------------------------------------------------------
        #-------------Fungsi Respon Start---------------------#
             elif msg.text in ["Get ready"]:
 			  if msg.from_ in admin:
