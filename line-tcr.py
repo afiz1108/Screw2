@@ -1442,6 +1442,61 @@ def bot(op):
                 else:
                     cl.sendText(msg.to,"拒绝了全部的邀请。")
 
+            elif "Say " in msg.text:
+              if msg.from_ in  admin:
+                    bctxt = msg.text.replace("Say ","")
+                    cl.sendText(msg.to,(bctxt))
+                    ki.sendText(msg.to,(bctxt))
+                    kk.sendText(msg.to,(bctxt))
+                    kc.sendText(msg.to,(bctxt))
+										
+            elif "TL:" in msg.text:
+              if msg.from_ in admin:
+                tl_text = msg.text.replace("TL:","")
+                cl.sendText(msg.to,"line://home/post?userMid="+mid+"&postId="+cl.new_post(tl_text)["result"]["post"]["postInfo"]["postId"])
+                ki.sendText(msg.to,"line://home/post?userMid="+mid+"&postId="+ki.new_post(tl_text)["result"]["post"]["postInfo"]["postId"])
+                kk.sendText(msg.to,"line://home/post?userMid="+mid+"&postId="+kk.new_post(tl_text)["result"]["post"]["postInfo"]["postId"])
+                kc.sendText(msg.to,"line://home/post?userMid="+mid+"&postId="+kc.new_post(tl_text)["result"]["post"]["postInfo"]["postId"])
+								
+            elif "Info @" in msg.text:
+                nama = msg.text.replace("Info @","")
+                target = nama.rstrip(' ')
+                tob = cl.getGroup(msg.to)
+                for g in tob.members:
+                    if target == g.displayName:
+                        gjh= cl.getContact(g.mid)
+                        try:
+                            cover = cl.channel.getCover(g.mid)
+                        except:
+                            cover = ""
+                        cl.sendText(msg.to,"[Display Name]:\n" + gjh.displayName + "\n[Mid]:\n" + gjh.mid + "\n[BIO]:\n" + gjh.statusMessage + "\n[pict profile]:\nhttp://dl.profile.line-cdn.net/" + gjh.pictureStatus + "\n[Cover]:\n" + str(cover))
+                    else:
+                        pass
+											
+            elif msg.text in ["Purge"]:
+              if msg.from_ in admin:
+                if msg.toType == 2:
+                    group = cl.getGroup(msg.to)
+                    gMembMids = [contact.mid for contact in group.members]
+                    matched_list = []
+                    for tag in wait["blacklist"]:
+                        matched_list+=filter(lambda str: str == tag, gMembMids)
+                    if matched_list == []:
+                        random.choice(KAC).sendText(msg.to,"group purge")
+                        return
+                    for jj in matched_list:
+                        try:
+                            klist=[ki,kk,kc]
+                            kicker = random.choice(klist)
+                            kicker.kickoutFromGroup(msg.to,[jj])
+                            print (msg.to,[jj])
+                        except:
+                            pass
+
+            elif msg.text in ["Clear banlist"]:
+              if msg.from_ in admin:
+                                wait["blacklist"] = {}
+                                cl.sendText(msg.to,"succes clear all banlist")
 
         #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Up","up","Up Chat","Up chat","up chat","Upchat","upchat"]:
