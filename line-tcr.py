@@ -1438,6 +1438,7 @@ def bot(op):
 #--------------------------------------------------------
 #Restart_Program
             elif msg.text in ["Bot:restart"]:
+              if msg.from_ in admin:
                   cl.sendText(msg.to, "Bot has been restarted")
                   restart_program()
                   print "@Restart"
