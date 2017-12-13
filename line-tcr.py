@@ -1434,6 +1434,24 @@ def bot(op):
             elif msg.text in ["Fiz","fiz"]:
                 cl.sendText(msg.to,"Ya? Type 'help' for help message.")
 #-----------------------------------------------
+            elif "Spamg " in msg.text:
+                if msg.from_ in admin:
+                   txt = msg.text.split(" ")
+                   jmlh = int(txt[2])
+                   teks = msg.text.replace("Spamg "+str(txt[1])+" "+str(jmlh)+ " ","")
+                   tulisan = jmlh * (teks+"\n")
+                   #Keke cantik <3
+                   if txt[1] == "on":
+                        if jmlh <= 10000:
+                             for x in range(jmlh):
+                                   cl.sendText(msg.to, teks)
+                        else:
+                               cl.sendText(msg.to, "Out of range! ")
+                   elif txt[1] == "off":
+                         if jmlh <= 10000:
+                               cl.sendText(msg.to, tulisan)
+                         else:
+                               cl.sendText(msg.to, "Out of range! ")
 
 #--------------------------------------------------------
 #Restart_Program
