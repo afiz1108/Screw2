@@ -31,7 +31,7 @@ kc.loginResult()
 
 cl
 
-print ("login success")
+print "login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -189,7 +189,7 @@ def RECEIVE_MESSAGE(op):
     except KeyboardInterrupt:
 	       sys.exit(0)
     except Exception as error:
-        (print error)
+        print error
         print ("\n\nRECEIVE_MESSAGE\n\n")
         return
 		
