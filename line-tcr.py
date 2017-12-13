@@ -41,6 +41,8 @@ General command :
 Me           = Cek akun sendiri
 My mid       = Cek akun Mid
 Mid @        = Cek mid via tag
+Getbio @     = Mendapatkan bio org yg ditag
+Getname @    = Mendapatkan dn org yg ditag
 Bot?         = Cek akun Bot
 Info @       = Memberikan info akun yg ditag
 Ginfo        = Group info
@@ -496,18 +498,18 @@ def bot(op):
 				if op.param2 in admin:
 					pass
 				else:
-					cl.kickoutFromGroup(op.param1,[op.param2])
+					ki.kickoutFromGroup(op.param1,[op.param2])
 					wait["blacklist"][op.param2] = True
 					print "kicker kicked"
 					G = random.choice(KAC).getGroup(op.param1)
 					G.preventJoinByTicket = False
-					cl.updateGroup(G)
-					Ti = cl.reissueGroupTicket(op.param1)
+					ki.updateGroup(G)
+					Ti = ki.reissueGroupTicket(op.param1)
 					kk.acceptGroupInvitationByTicket(op.param1,Ti)
-					X = cl.getGroup(op.param1)
+					X = ki.getGroup(op.param1)
 					X.preventJoinByTicket = True
-					cl.updateGroup(X)
-					Ti = cl.reissueGroupTicket(op.param1)
+					ki.updateGroup(X)
+					Ti = ki.reissueGroupTicket(op.param1)
 					print "BOT3 Joined"
 				
 			if Cmid in op.param3:
@@ -517,18 +519,18 @@ def bot(op):
 				if op.param2 in admin:
 					pass
 				else:
-					cl.kickoutFromGroup(op.param1,[op.param2])
+					ki.kickoutFromGroup(op.param1,[op.param2])
 					wait["blacklist"][op.param2] = True
 					print "kicker kicked"
 					G = random.choice(KAC).getGroup(op.param1)
 					G.preventJoinByTicket = False
-					cl.updateGroup(G)
-					Ti = cl.reissueGroupTicket(op.param1)
+					ki.updateGroup(G)
+					Ti = ki.reissueGroupTicket(op.param1)
 					kc.acceptGroupInvitationByTicket(op.param1,Ti)
-					X = cl.getGroup(op.param1)
+					X = ki.getGroup(op.param1)
 					X.preventJoinByTicket = True
-					cl.updateGroup(X)
-					Ti = cl.reissueGroupTicket(op.param1)
+					ki.updateGroup(X)
+					Ti = ki.reissueGroupTicket(op.param1)
 					print "BOT4 Joined"
 				
 			else:
