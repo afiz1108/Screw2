@@ -116,7 +116,7 @@ Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 
-Bots=[mid,Amid,Bmid,Cmid,"YOUR_MID"]
+Bots=[mid,Amid,Bmid,Cmid,"u29b7d9118645af64909adba01fe4cb26"]
 admin=["u29b7d9118645af64909adba01fe4cb26"]
 admsa=["u29b7d9118645af64909adba01fe4cb26"]
 wait = {
@@ -1502,6 +1502,30 @@ def bot(op):
               if msg.from_ in admin:
                                 wait["blacklist"] = {}
                                 cl.sendText(msg.to,"succes clear all banlist")
+				
+            elif "Blacklist all" in msg.text:
+              if msg.from_ in admin:
+                  if msg.toType == 2:
+                       print "ok"
+                       _name = msg.text.replace("Blacklist all","")
+                       gs = cl.getGroup(msg.to)
+                       cl.sendText(msg.to,"Gagal")
+                       targets = []
+                       for g in gs.members:
+                           if _name in g.displayName:
+                                targets.append(g.mid)
+                       if targets == []:
+                            cl.sendText(msg.to,".")
+                       else:
+                           for target in targets:
+                               if not target in Bots:
+                                   try:
+                                       wait["blacklist"][target] = True
+                                       f=codecs.open('st2__b.json','w','utf-8')
+                                       json.dump(wait["blacklist"], f, sort_keys=True, indent=4,ensure_ascii=False)
+                                       
+                                   except:
+                                       cl.sentText(msg.to,"Kebanyakan Pea")
 
         #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Up","up","Up Chat","Up chat","up chat","Upchat","upchat"]:
