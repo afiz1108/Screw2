@@ -38,20 +38,22 @@ sys.setdefaultencoding('utf-8')
 helpMessage =""" - Fฺ่่่๋iฺ่่่๋zฺ่่่๋ bot -
 
 General command :
-Me  =  Cek akun sendiri
-My mid  =  Cek akun Mid
-Mid @ = Cek mid via tag
-Bot?  =  Cek akun Bot
-Ginfo  =  Group info
+Me         =  Cek akun sendiri
+My mid     =  Cek akun Mid
+Mid @      = Cek mid via tag
+Bot?       =  Cek akun Bot
+Ginfo      =  Group info
 List group = Melihat grup
-Group pict  =  Melihat pict grup
-Speedbot  =  Cek kecepatan bot
-Up  =  Fungsi spam chat
-Tagall  =  Mention semua user
-Cek  =  Membuat set point
-Sider  =  Melihat sider dibawah read point
-Apakah ...  =  Menanyakan jawaban ya atau tidak
-Creator  =  Melihat kontak pembuat bot
+Group pict =  Melihat pict grup
+Speedbot   =  Cek kecepatan bot
+Up         =  Fungsi spam chat
+Tagall     =  Mention semua user
+Cek        =  Membuat set point
+Sider      =  Melihat sider dibawah read point
+Apakah     =  Menanyakan jawaban ya atau tidak
+Creator    =  Melihat kontak pembuat bot
+Time       =  Melihat waktu/jam sekarang
+welcome    =  Ucapan selamat datang dan melihat group creator
 
 private command :
 Set group = Melihat private menu"""
@@ -96,6 +98,9 @@ Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
 [Bye bots] = Mengeluarkan semua bots assist
 [Bye Fiz] = Mengeluarkan bot utama
 [Fiz out] = Mengeluarkan bot utama dari semua grup
+[crash] = Memberikan kontak
+[Rejectall] = Menolak semua invite group pada bot
+[clean invites] = Cancel semua invite yg ada pada grup
 [Bc ...] = Untuk broadcast ke semua grup
 [Contact bc ...] = Untuk broadcast ke semua kontak
 [Kernel] = Melihat kernel bot"""
@@ -1403,6 +1408,40 @@ def bot(op):
             elif "Time" in msg.text:
               if msg.from_ in admin:
                   cl.sendText(msg.to,datetime.today().strftime('%H:%M:%S'))
+
+            elif msg.text.lower() == 'welcome':
+                ginfo = cl.getGroup(msg.to)
+                cl.sendText(msg.to,"Selamat Datang Di Grup " + str(ginfo.name))
+                cl.sendText(msg.to,"Owner Grup " + str(ginfo.name) + " :\n" + ginfo.creator.displayName )
+								
+            elif 'clean invites' in msg.text.lower():
+               if msg.from_ in admin:
+                if msg.toType == 2:
+                    X = cl.getGroup(msg.to)
+                    if X.invitee is not None:
+                        gInviMids = [contact.mid for contact in X.invitee]
+                        random.choice(KAC).cancelGroupInvitation(msg.to, gInviMids)
+                    else:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"No one is inviting。")
+                        else:
+                            cl.sendText(msg.to,"Sorry, nobody absent")
+                else:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Can not be used outside the group")
+                    else:
+                        cl.sendText(msg.to,"Not for use less than group")
+												
+            elif msg.text in ["Rejectall"]:
+              if msg.from_ in admin:
+                gid = cl.getGroupIdsInvited()
+                for i in gid:
+                    cl.rejectGroupInvitation(i)
+                if wait["lang"] == "JP":
+                    cl.sendText(msg.to,"All Invites has been Rejected")
+                else:
+                    cl.sendText(msg.to,"拒绝了全部的邀请。")
+
 
         #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Up","up","Up Chat","Up chat","up chat","Upchat","upchat"]:
