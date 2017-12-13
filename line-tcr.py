@@ -86,6 +86,7 @@ Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
 [Stafflist] = Melihat daftar admin
 [Ban @] = Ban target with mention
 [Ban] = Ban target with send contact 
+[Blacklist all] = Ban semua member di grup
 [Unban @] = Unban target with mention
 [Unban] = Unban target with send contact
 [clean invites] = Cancel semua invite yg ada pada grup
