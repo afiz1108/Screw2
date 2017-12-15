@@ -14,20 +14,22 @@ import requests,tempfile
 #kk.loginResult()
 
 cl = LINETCR.LINE()
-cl.login(token="En5lEbmbbhl8cIMode41.7S41YiepIyUbpnsN+5O2eq.WRevy2pd1qz887eYqoc6156Jef0ls9UZWw6vxbRUr/A=")
+cl.login(qr=True)
 cl.loginResult()
 
 ki = LINETCR.LINE()
-ki.login(token="EnElg2MEVVN3vJU6JBA9.J/eMhQwd2iuTfxuz19zSsq.yStQttwpV3s1+yHTsNrxlENNRkbV4ZOuJre+fdvkqlI=")
+ki.login(qr=True)
 ki.loginResult()
 
 kk = LINETCR.LINE()
-kk.login(token="EnAwYW4j9rDeLa09fqJ5.vn6uYjWWW0JudBqT33gfDq.TMIUCcRYVGBZ5qn0fj5lGNjMDqQ/AUw1Apimjyn74ZQ=")
+kk.login(qr=True)
 kk.loginResult()
 
 kc = LINETCR.LINE()
-kc.login(token="EnB7mJNoQIwYSRLzDE4b.bqOFJnJxN4T4QjA6tymdIW.my21TmUbSnsKt52EK/Wp+wwFpBcyqQTBcKiMIQsdeM8=")
+kc.login(qr=True)
 kc.loginResult()
+
+
 
 cl
 
