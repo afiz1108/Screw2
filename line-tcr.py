@@ -29,8 +29,6 @@ kc = LINETCR.LINE()
 kc.login(qr=True)
 kc.loginResult()
 
-
-
 cl
 
 print "login success"
