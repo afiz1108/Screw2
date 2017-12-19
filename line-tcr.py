@@ -1463,7 +1463,7 @@ def bot(op):
                     cl.sendText(msg.to,"拒绝了全部的邀请。")
 
             elif "Say " in msg.text:
-              if msg.from_ in  admin:
+              #if msg.from_ in  admin:
                     bctxt = msg.text.replace("Say ","")
                     cl.sendText(msg.to,(bctxt))
                     ki.sendText(msg.to,(bctxt))
