@@ -98,7 +98,7 @@ Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
 [Kill @] = Kick target banned
 [Purge] = Kick all banned user
 [Nk @] = Kick target user
-[List group] = Melihat daftar grup pada bot
+[List group] = Melihat grup
 [Group id] = Melihat daftar id grup pada bot
 [Invite mid] = Invite via mid
 [inv: (gid)] = Invite admin ke group id yang dituju
@@ -1567,12 +1567,12 @@ def bot(op):
             elif "Contact bc " in msg.text:
 			  if msg.from_ in admin:
 				bctxt = msg.text.replace("Contact bc ", "")
-				t = cl.getAllContactIds()
-				for manusia in t:
-					cl.sendText(manusia, (bctxt))
+				n = cl.getGroupIdsJoined()
+				for manusia in n:
+					cl.sendText(manusia,(bctxt +"\n\n\nbroadcasted by:" + cl.getContact(msg.from_).displayName))
        #--------------Fungsi Broadcast Finish-----------#
 
-            elif msg.text in ["Cv say hi"]:
+            elif msg.text in ["Bots say hi"]:
                 ki.sendText(msg.to,"Hi buddy 􀜁􀅔Har Har􏿿")
                 kk.sendText(msg.to,"Hi buddy 􀜁􀅔Har Har􏿿")
                 kc.sendText(msg.to,"Hi buddy 􀜁􀅔Har Har􏿿")
@@ -1767,6 +1767,7 @@ def bot(op):
                         pass
 						
             elif msg.text in ["List group"]:
+	      if msg.from_ in admin:
                 gid = cl.getGroupIdsJoined()
                 h = ""
 		jml = 0
